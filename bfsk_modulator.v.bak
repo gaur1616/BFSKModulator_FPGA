@@ -1,0 +1,3 @@
+module  bfsk_modulator(CLOCK_50,
+				  signal1, signal2,
+				  signal);

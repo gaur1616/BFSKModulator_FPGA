@@ -1,0 +1,37 @@
+module  signal_generator(CLOCK_50,
+				  signal);
+					 
+
+input CLOCK_50;
+output [15:0] signal;
+
+
+//Signal generator elements
+reg [7:0] sinAddr = 0;
+reg [15:0] sine;
+
+
+//Variables to hold captured values
+reg [15:0] signal; //vector with values of ROM
+
+always@(posedge CLOCK_50)
+begin
+	signal <= sine;
+	sinAddr <= sinAddr + 8'd1;
+end
+
+//Sin Wave ROM Table
+always@(sinAddr)
+	begin
+	if(sinAddr>8'd127)
+	begin
+		sine = 16'd0;
+	end
+	else
+	begin
+		sine = 16'd65535;
+	end
+		
+	end	
+	
+endmodule
